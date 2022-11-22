@@ -1,0 +1,4 @@
+X:/mica/build/CMakeFiles/mica.dir
+X:/mica/build/CMakeFiles/INSTALL.dir
+X:/mica/build/CMakeFiles/ALL_BUILD.dir
+X:/mica/build/CMakeFiles/ZERO_CHECK.dir

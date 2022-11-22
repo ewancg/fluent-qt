@@ -1,0 +1,10 @@
+^X:\MICA\BUILD\CMAKEFILES\C2E0CEAABAA7C4259E38FAF5CA91727F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SX:/mica -BX:/mica/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file X:/mica/build/mica.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
