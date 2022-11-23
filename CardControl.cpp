@@ -1,8 +1,8 @@
 #include "CardControl.h"
 
 CardControl::CardControl(QWidget *parent) : Control(parent) {
-  backgroundBrush = QColor("#0DFFFFFF");
-  borderBrush = QColor("#19000000");
+  m_background_brush = QColor("#0DFFFFFF");
+  m_border_brush = QColor("#19000000");
 }
 
 void CardControl::paintEvent(QPaintEvent *event) {

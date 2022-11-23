@@ -14,29 +14,42 @@ Control::Control(QWidget *parent) : QWidget{parent} {
   m_font = f;
 
   m_padding = QMargins(epx(11), epx(5), epx(11), epx(6));
-  setProperty("border-thickness", 1);
-  setProperty("border-radius", 4);
 }
 
 void Control::paintBackground(QPaintEvent *, QPainter &p) {
-  const int border = epx(property("border-thickness").toDouble());
-  // const QBrush borderBrush = brushes->find("border-brush").value();
-  //  const QBrush backgroundBrush = brushes->find("background-brush").value();
-
-  const int od = epx(property("border-radius").toDouble());
-  const int id = od - border;
+  if (!m_border_outer_radius.isValid())
+    m_border_outer_radius = epx(m_border_radius);
+  if (!m_border_inner_radius.isValid())
+    m_border_inner_radius = m_border_outer_radius - m_border_thickness;
 
   p.setRenderHint(QPainter::Antialiasing);
 
   QPainterPath path, path2;
 
-  path.addRoundedRect(this->rect(), od, od);
-  path2.addRoundedRect(this->rect().marginsRemoved(mg(border)), id, id);
+  const int w = width();
+  const int h = height();
+
+  auto drawRoundedRect = [this, w, h](QPainterPath &p, const BorderRadius &r,
+                                      int inset) {
+    // clang-format off
+    p.arcMoveTo(
+            inset,                      inset,                      r.topLeft,      r.topLeft,      0);
+
+    p.arcTo(inset,                      inset,                      r.topLeft,      r.topLeft,      180,    -90);
+    p.arcTo(w - r.topRight - inset,     inset,                      r.topRight,     r.topRight,     90,     -90);
+    p.arcTo(w - r.bottomRight - inset,  h - r.bottomRight - inset,  r.bottomRight,  r.bottomRight,  0,      -90);
+    p.arcTo(inset,                      h - r.bottomLeft - inset,   r.bottomLeft,   r.bottomLeft,   270,    -90);
+    p.arcTo(inset,                      inset,                      r.topLeft,      r.topLeft,      180,    0);
+    // clang-format on
+  };
+
+  drawRoundedRect(path, m_border_outer_radius, 0);
+  drawRoundedRect(path2, m_border_inner_radius, epx(m_border_thickness));
 
   p.setPen(Qt::NoPen);
-  p.setBrush(borderBrush);
+  p.setBrush(m_border_brush);
   p.drawPath(path.subtracted(path2));
-  p.setBrush(backgroundBrush);
+  p.setBrush(m_background_brush);
   p.drawPath(path2.intersected(path));
 }
 
@@ -57,7 +70,7 @@ void Control::paintText(QPaintEvent *, QPainter &p) {
 }
 
 void Control::paintEvent(QPaintEvent *event) {
-  // QPainter p(this);
-  // paintBackground(event, p);
+  QPainter p(this);
+  paintBackground(event, p);
   // paintText(event, p);
 }

@@ -8,8 +8,11 @@
 #include <QWidget>
 #include <QtDebug>
 #include <QtMath>
-#define epx(a) qCeil((a * logicalDpiX()) / 96)
+
+#define epx(a) ((a * this->logicalDpiX()) / 96)
 #define mg(a) QMargins(a, a, a, a)
+
+#include <BorderRadius.h>
 
 class Control : public QWidget {
   Q_OBJECT
@@ -18,8 +21,8 @@ class Control : public QWidget {
   QHash<QString, QBrush> *brushes;
 
   QVariantAnimation foregroundAnimation, backgroundAnimation;
-  QBrush foregroundBrush = Qt::transparent, backgroundBrush = Qt::transparent,
-         borderBrush = Qt::transparent;
+  QBrush foregroundBrush = Qt::transparent,
+         m_background_brush = Qt::transparent, m_border_brush = Qt::transparent;
  signals:
 
  public slots:
@@ -47,10 +50,49 @@ class Control : public QWidget {
   }
   const QFont font() { return m_font; }
 
+  void setBorderThickness(int thickness) {
+    m_border_thickness = thickness;
+    m_border_inner_radius.invalidate();
+    update();
+  }
+  int borderThickness() { return m_border_thickness; }
+
+  void setBorderRadius(BorderRadius radius) {
+    m_border_radius = radius;
+    m_border_outer_radius.invalidate();
+    m_border_inner_radius.invalidate();
+    update();
+  }
+  BorderRadius borderRadius() { return m_border_radius; }
+
+ public:  // Non-slot overloads
+  template <Numeric T>
+  void setBorderRadius(T topLeft, T topRight, T bottomLeft, T bottomRight) {
+    setBorderRadius(BorderRadius(topLeft, topRight, bottomLeft, bottomRight));
+  }
+  template <Numeric T>
+  void setBorderRadius(T top, T bottom) {
+    setBorderRadius(top, top, bottom, bottom);
+  }
+  template <Numeric T>
+  void setBorderRadius(T radius) {
+    setBorderRadius(radius, radius, radius, radius);
+  }
+
  protected:
   QString m_text;
   QMargins m_padding;
   QFont m_font;
+
+  int m_border_thickness = 1;
+
+  BorderRadius
+      // Unscaled
+      m_border_radius = BorderRadius(4),
+      // Scaled; outer raidius - thickness
+      m_border_inner_radius = BorderRadius::invalid(),
+      // Scaled; unscaled radius * epx
+      m_border_outer_radius = BorderRadius::invalid();
 
   Qt::Alignment m_alignment = Qt::AlignHCenter | Qt::AlignVCenter;
 

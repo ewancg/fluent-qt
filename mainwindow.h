@@ -12,6 +12,7 @@
 #include <QTimer>
 
 #include "Control.h"
+// Window attributes
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

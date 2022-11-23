@@ -1,4 +1,9 @@
-X:/mica/build/CMakeFiles/mica.dir
-X:/mica/build/CMakeFiles/INSTALL.dir
-X:/mica/build/CMakeFiles/ALL_BUILD.dir
-X:/mica/build/CMakeFiles/ZERO_CHECK.dir
+X:/fluent-qt/build/CMakeFiles/mica.dir
+X:/fluent-qt/build/CMakeFiles/edit_cache.dir
+X:/fluent-qt/build/CMakeFiles/rebuild_cache.dir
+X:/fluent-qt/build/CMakeFiles/list_install_components.dir
+X:/fluent-qt/build/CMakeFiles/install.dir
+X:/fluent-qt/build/CMakeFiles/install/local.dir
+X:/fluent-qt/build/CMakeFiles/install/strip.dir
+X:/fluent-qt/build/CMakeFiles/mica_autogen_timestamp_deps.dir
+X:/fluent-qt/build/CMakeFiles/mica_autogen.dir

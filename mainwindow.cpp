@@ -6,10 +6,14 @@
 #include <QtMath>
 
 #include "./ui_mainwindow.h"
+#include "dwmapi.h"  // only needed for margins. ugh
+
+#define DWMWA_USE_IMMERSIVE_DARK_MODE 20
+#define DWMWA_SYSTEMBACKDROP_TYPE 38
 
 #pragma comment(lib, "dwmapi.lib")
-#include "dwmapi.h"  // only needed for margins. ugh
-#include "windows.ui.viewmanagement.h"
+
+// #include "windows.ui.viewmanagement.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -19,9 +23,9 @@ MainWindow::MainWindow(QWidget *parent)
   setAttribute(Qt::WA_NoSystemBackground, true);
   setAttribute(Qt::WA_OpaquePaintEvent, false);
 
-  Windows::UI::UISettings s;
+  // Windows::UI::UISettings s;
 
-  auto accent = UISettings().GetColorValue(AccentLight1);
+  // auto accent = UISettings().GetColorValue(AccentLight1);
 
   QTimer::singleShot(0, this, [this] {
     auto hwnd = reinterpret_cast<HWND>(this->winId());
@@ -46,16 +50,26 @@ MainWindow::MainWindow(QWidget *parent)
   });
 
   ui->button->setText("Click Me");
-  ui->button_3->setProperty("border-thickness", 3);
-  ui->button_3->setProperty("border-radius", 12);
+  ui->button_3->setBorderThickness(3);
+  ui->button_3->setBorderRadius(12, 24, 12, 6);
+  ui->button_3->m_border_brush = QColor("#88fc4a88");
 
-  ui->button_3->borderBrush = QColor("#88fc4a88");
+  QColor m_border_brush = Qt::red;
+  m_border_brush.setAlphaF(0.5);
+  ui->widget_2->m_border_brush = m_border_brush;
 
-  ui->bourt->setProperty("border-radius", 0);
+  QColor m_background_brush = Qt::blue;
+  m_background_brush.setAlphaF(0.5);
+  ui->widget_2->m_background_brush = m_background_brush;
+
+  ui->widget_2->setBorderRadius(10, 20, 30, 40);
+  ui->widget_2->setBorderThickness(4);
+
+  ui->bourt->setBorderRadius(0);
 
   ui->button_4->setTextAlignment(Qt::AlignRight | Qt::AlignVCenter);
-  ui->button_4->setText("Combo Boxin");
-  ui->button_4->setGlyph(QChar('\ue70d'));
+  //  ui->button_4->setText("Combo Boxin");
+  ui->button_4->setGlyph(QChar(0xe70d));
 
   ui->textBlock->setText(
       "zzzzzzzzzzzzzzzzz\nzzzzzzzzzzzzzzzzzzzzzzzzzz\nzzzzzzzzzzzzzzzzzzzzzzzzo"

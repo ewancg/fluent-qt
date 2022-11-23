@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
@@ -19,6 +19,8 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+
+        BorderRadius.h
 
         ComboBoxControl.cpp
         ComboBoxControl.h
@@ -59,7 +61,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(mica PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(mica PRIVATE Qt${QT_VERSION_MAJOR}::Widgets dwmapi)
 
 set_target_properties(mica PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

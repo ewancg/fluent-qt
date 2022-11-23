@@ -10,9 +10,9 @@ ButtonControl::ButtonControl(QWidget *parent) : Control(parent) {
   brushes->insert("button-foreground-brush-pressed", QColor("#C5FFFFFF"));
 
   QLinearGradient g(0, 0, 0, epx(3));
-  g.setColorAt(0.33, QColor("#18FFFFFF"));
-  g.setColorAt(1, QColor("#12FFFFFF"));
-  borderBrush = g;
+  g.setColorAt(epx(0.33), QColor("#18FFFFFF"));
+  g.setColorAt(epx(1), QColor("#12FFFFFF"));
+  m_border_brush = g;
 
   //  brushes->insert("button-border-brush-idle", g);
 
@@ -24,10 +24,10 @@ ButtonControl::ButtonControl(QWidget *parent) : Control(parent) {
   //                  brushes->find("button-foreground-brush-idle").value());
 
   backgroundAnimation.setDuration(83);
-  backgroundBrush =
+  m_background_brush =
       brushes->find("button-background-brush-idle").value().color();
   connect(&backgroundAnimation, &QVariantAnimation::valueChanged, this, [this] {
-    backgroundBrush = QColor(backgroundAnimation.currentValue().toString());
+    m_background_brush = QColor(backgroundAnimation.currentValue().toString());
     update();
   });
 

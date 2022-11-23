@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-9825aa47b8b15c8b00f4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "mica",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "mica::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mica-Debug-09b75ce84f0e29ab7fd6.json",
+					"name" : "mica",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mica_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mica_autogen-Debug-9253130572c53d6d4f58.json",
+					"name" : "mica_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mica_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mica_autogen_timestamp_deps-Debug-b95950b22349da52f527.json",
+					"name" : "mica_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "X:/fluent-qt/build",
+		"source" : "X:/fluent-qt"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
