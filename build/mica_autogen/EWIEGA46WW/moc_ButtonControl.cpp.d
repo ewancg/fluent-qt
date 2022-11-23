@@ -1,5 +1,7 @@
-X:/fluent-qt/build/mica_autogen/EWIEGA46WW/moc_ButtonControl.cpp: X:/fluent-qt/ButtonControl.h \
-  X:/fluent-qt/build/mica_autogen/moc_predefs.h \
+C:/Users/ewan/Documents/Projects/fluent-qt/build/mica_autogen/EWIEGA46WW/moc_ButtonControl.cpp: C:/Users/ewan/Documents/Projects/fluent-qt/ButtonControl.h \
+  C:/Users/ewan/Documents/Projects/fluent-qt/build/mica_autogen/moc_predefs.h \
+  C:/Users/ewan/Documents/Projects/fluent-qt/BorderRadius.h \
+  C:/Users/ewan/Documents/Projects/fluent-qt/Control.h \
   C:/msys64/mingw64/include/QtCore/QEvent \
   C:/msys64/mingw64/include/QtCore/QPropertyAnimation \
   C:/msys64/mingw64/include/QtCore/QVariant \
@@ -102,7 +104,12 @@ X:/fluent-qt/build/mica_autogen/EWIEGA46WW/moc_ButtonControl.cpp: X:/fluent-qt/B
   C:/msys64/mingw64/include/QtGui/qtransform.h \
   C:/msys64/mingw64/include/QtGui/qwindowdefs.h \
   C:/msys64/mingw64/include/QtGui/qwindowdefs_win.h \
+  C:/msys64/mingw64/include/QtWidgets/QLayout \
   C:/msys64/mingw64/include/QtWidgets/QWidget \
+  C:/msys64/mingw64/include/QtWidgets/qboxlayout.h \
+  C:/msys64/mingw64/include/QtWidgets/qgridlayout.h \
+  C:/msys64/mingw64/include/QtWidgets/qlayout.h \
+  C:/msys64/mingw64/include/QtWidgets/qlayoutitem.h \
   C:/msys64/mingw64/include/QtWidgets/qsizepolicy.h \
   C:/msys64/mingw64/include/QtWidgets/qtwidgets-config.h \
   C:/msys64/mingw64/include/QtWidgets/qtwidgetsglobal.h \
@@ -320,6 +327,4 @@ X:/fluent-qt/build/mica_autogen/EWIEGA46WW/moc_ButtonControl.cpp: X:/fluent-qt/B
   C:/msys64/mingw64/include/vadefs.h \
   C:/msys64/mingw64/include/wchar.h \
   C:/msys64/mingw64/include/wctype.h \
-  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/mm_malloc.h \
-  X:/fluent-qt/BorderRadius.h \
-  X:/fluent-qt/Control.h
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/mm_malloc.h

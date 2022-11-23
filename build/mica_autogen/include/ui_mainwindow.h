@@ -69,7 +69,6 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(textBlock->sizePolicy().hasHeightForWidth());
         textBlock->setSizePolicy(sizePolicy);
-        textBlock->setMinimumSize(QSize(100, 40));
         vboxLayout = new QVBoxLayout(textBlock);
         vboxLayout->setObjectName(QString::fromUtf8("vboxLayout"));
         vboxLayout->setContentsMargins(0, 0, 0, 0);
@@ -80,7 +79,6 @@ public:
         button->setObjectName(QString::fromUtf8("button"));
         sizePolicy.setHeightForWidth(button->sizePolicy().hasHeightForWidth());
         button->setSizePolicy(sizePolicy);
-        button->setMinimumSize(QSize(100, 40));
         _2 = new QVBoxLayout(button);
         _2->setObjectName(QString::fromUtf8("_2"));
         _2->setContentsMargins(0, 0, 0, 0);
@@ -92,15 +90,15 @@ public:
 
         widget = new CardControl(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy);
         horizontalLayout_3 = new QHBoxLayout(widget);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         bourt = new ButtonControl(widget);
         bourt->setObjectName(QString::fromUtf8("bourt"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(bourt->sizePolicy().hasHeightForWidth());
         bourt->setSizePolicy(sizePolicy1);
 
@@ -114,7 +112,6 @@ public:
         button_4->setObjectName(QString::fromUtf8("button_4"));
         sizePolicy.setHeightForWidth(button_4->sizePolicy().hasHeightForWidth());
         button_4->setSizePolicy(sizePolicy);
-        button_4->setMinimumSize(QSize(100, 40));
         _4 = new QVBoxLayout(button_4);
         _4->setObjectName(QString::fromUtf8("_4"));
         _4->setContentsMargins(0, 0, 0, 0);
@@ -125,7 +122,6 @@ public:
         button_3->setObjectName(QString::fromUtf8("button_3"));
         sizePolicy.setHeightForWidth(button_3->sizePolicy().hasHeightForWidth());
         button_3->setSizePolicy(sizePolicy);
-        button_3->setMinimumSize(QSize(100, 40));
         _3 = new QVBoxLayout(button_3);
         _3->setObjectName(QString::fromUtf8("_3"));
         _3->setContentsMargins(0, 0, 0, 0);
@@ -168,7 +164,6 @@ public:
         button_5->setObjectName(QString::fromUtf8("button_5"));
         sizePolicy.setHeightForWidth(button_5->sizePolicy().hasHeightForWidth());
         button_5->setSizePolicy(sizePolicy);
-        button_5->setMinimumSize(QSize(100, 40));
         _5 = new QVBoxLayout(button_5);
         _5->setObjectName(QString::fromUtf8("_5"));
         _5->setContentsMargins(0, 0, 0, 0);

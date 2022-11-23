@@ -36,4 +36,5 @@ void ComboBoxControl::paintEvent(QPaintEvent *event) {
   paintBackground(event, p);
   paintText(event, p);
   paintChevron(event, p);
+  evaluateMinimumSize(event, p);
 }

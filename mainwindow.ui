@@ -25,12 +25,6 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>40</height>
-         </size>
-        </property>
         <layout class="QVBoxLayout">
          <property name="leftMargin">
           <number>0</number>
@@ -55,12 +49,6 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>40</height>
-         </size>
-        </property>
         <layout class="QVBoxLayout" name="_2">
          <property name="leftMargin">
           <number>0</number>
@@ -82,7 +70,7 @@
     <item>
      <widget class="CardControl" name="widget" native="true">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -119,12 +107,6 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>40</height>
-          </size>
-         </property>
          <layout class="QVBoxLayout" name="_4">
           <property name="leftMargin">
            <number>0</number>
@@ -148,12 +130,6 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>40</height>
-          </size>
          </property>
          <layout class="QVBoxLayout" name="_3">
           <property name="leftMargin">
@@ -181,6 +157,12 @@
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
       </property>
      </spacer>
     </item>
@@ -231,12 +213,6 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>100</width>
-        <height>40</height>
-       </size>
       </property>
       <layout class="QVBoxLayout" name="_5">
        <property name="leftMargin">

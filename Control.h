@@ -1,6 +1,7 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+#include <QLayout>
 #include <QPainter>
 #include <QPainterPath>
 #include <QPropertyAnimation>
@@ -8,7 +9,6 @@
 #include <QWidget>
 #include <QtDebug>
 #include <QtMath>
-
 #define epx(a) ((a * this->logicalDpiX()) / 96)
 #define mg(a) QMargins(a, a, a, a)
 
@@ -28,30 +28,34 @@ class Control : public QWidget {
  public slots:
   void setText(const QString &text) {
     m_text = text;
+    m_minimum_size = QSize(-1, -1);
     update();
   }
   const QString text() { return m_text; }
 
   void setTextAlignment(const Qt::Alignment alignment) {
     m_alignment = alignment;
+    m_minimum_size = QSize(-1, -1);
     update();
   }
   const Qt::Alignment textAlignment() { return m_alignment; }
 
   void setPadding(const QMargins &padding) {
     m_padding = padding;
+    m_minimum_size = QSize(-1, -1);
     update();
   }
   const QMargins padding() { return m_padding; }
 
   void setFont(const QFont &font) {
-    m_font = font;
+    QWidget::setFont(font);
+    m_minimum_size = QSize(-1, -1);
     update();
   }
-  const QFont font() { return m_font; }
 
   void setBorderThickness(int thickness) {
     m_border_thickness = thickness;
+    m_minimum_size = QSize(-1, -1);
     m_border_inner_radius.invalidate();
     update();
   }
@@ -59,6 +63,7 @@ class Control : public QWidget {
 
   void setBorderRadius(BorderRadius radius) {
     m_border_radius = radius;
+    m_minimum_size = QSize(-1, -1);
     m_border_outer_radius.invalidate();
     m_border_inner_radius.invalidate();
     update();
@@ -82,7 +87,8 @@ class Control : public QWidget {
  protected:
   QString m_text;
   QMargins m_padding;
-  QFont m_font;
+
+  QSize m_minimum_size;
 
   int m_border_thickness = 1;
 
@@ -96,6 +102,7 @@ class Control : public QWidget {
 
   Qt::Alignment m_alignment = Qt::AlignHCenter | Qt::AlignVCenter;
 
+  void evaluateMinimumSize(QPaintEvent *, QPainter &);
   void paintBackground(QPaintEvent *, QPainter &);
   void paintText(QPaintEvent *, QPainter &);
   void paintEvent(QPaintEvent *event) override;

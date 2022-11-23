@@ -94,4 +94,5 @@ void ButtonControl::paintEvent(QPaintEvent *event) {
   QPainter p(this);
   paintBackground(event, p);
   paintText(event, p);
+  evaluateMinimumSize(event, p);
 }

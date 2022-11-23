@@ -10,4 +10,5 @@ TextBlockControl::TextBlockControl(QWidget *parent) : Control(parent) {
 void TextBlockControl::paintEvent(QPaintEvent *event) {
   QPainter p(this);
   paintText(event, p);
+  evaluateMinimumSize(event, p);
 }

@@ -71,9 +71,7 @@ MainWindow::MainWindow(QWidget *parent)
   //  ui->button_4->setText("Combo Boxin");
   ui->button_4->setGlyph(QChar(0xe70d));
 
-  ui->textBlock->setText(
-      "zzzzzzzzzzzzzzzzz\nzzzzzzzzzzzzzzzzzzzzzzzzzz\nzzzzzzzzzzzzzzzzzzzzzzzzo"
-      "oz");
+  ui->textBlock->setText("Line One\nLine Two");
   connect(ui->button, &ButtonControl::released, this, [this] {
     ui->button->setText("Bazoobledorpf");
     ui->button->update();

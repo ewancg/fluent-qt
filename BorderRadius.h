@@ -10,14 +10,14 @@ concept Numeric =
 
 struct BorderRadius {
   template <Numeric T>
-  explicit BorderRadius(const T radius) {
+  explicit BorderRadius(const T radius) noexcept {
     topLeft = radius;
     topRight = radius;
     bottomLeft = radius;
     bottomRight = radius;
   }
   template <Numeric T>
-  explicit BorderRadius(const T top, const T bottom) {
+  explicit BorderRadius(const T top, const T bottom) noexcept {
     topLeft = top;
     topRight = top;
     bottomLeft = bottom;
@@ -25,67 +25,88 @@ struct BorderRadius {
   }
   template <Numeric T>
   explicit BorderRadius(const T topLeft, const T topRight, const T bottomLeft,
-                        const T bottomRight) {
+                        const T bottomRight) noexcept {
     this->topLeft = topLeft;
     this->topRight = topRight;
     this->bottomLeft = bottomLeft;
     this->bottomRight = bottomRight;
   }
-  bool operator==(const BorderRadius &x) {
+  constexpr bool operator==(const BorderRadius &x) const noexcept {
     return topLeft == x.topLeft && topRight == x.topRight &&
            bottomLeft == x.bottomLeft && bottomRight == x.bottomRight;
   }
-  BorderRadius operator+(const BorderRadius &x) {
+  const BorderRadius operator+(const BorderRadius &x) const noexcept {
     return BorderRadius(topLeft + x.topLeft, topRight + x.topRight,
                         bottomLeft + x.bottomLeft, bottomRight + x.bottomRight);
   }
-  BorderRadius operator-(const BorderRadius &x) {
+  const BorderRadius operator-(const BorderRadius &x) const noexcept {
     return BorderRadius(topLeft - x.topLeft, topRight - x.topRight,
                         bottomLeft - x.bottomLeft, bottomRight - x.bottomRight);
   }
-  BorderRadius operator*(const BorderRadius &x) {
+  const BorderRadius operator*(const BorderRadius &x) const noexcept {
     return BorderRadius(topLeft * x.topLeft, topRight * x.topRight,
                         bottomLeft * x.bottomLeft, bottomRight * x.bottomRight);
   }
-  BorderRadius operator/(const BorderRadius &x) {
+  const BorderRadius operator/(const BorderRadius &x) const noexcept {
+    if (x.contains(0)) return invalid();
     return BorderRadius(topLeft / x.topLeft, topRight / x.topRight,
                         bottomLeft / x.bottomLeft, bottomRight / x.bottomRight);
   }
   template <Numeric T>
-  bool operator==(T x) {
+  constexpr bool operator==(T x) const noexcept {
     return topLeft == x && topRight == x && bottomLeft == x && bottomRight == x;
   }
   template <Numeric T>
-  BorderRadius operator+(const T x) {
+  constexpr BorderRadius operator+(const T x) const noexcept {
     return BorderRadius(topLeft + x, topRight + x, bottomLeft + x,
                         bottomRight + x);
   }
   template <Numeric T>
-  BorderRadius operator-(const T x) {
+  constexpr BorderRadius operator-(const T x) const noexcept {
     return BorderRadius(topLeft - x, topRight - x, bottomLeft - x,
                         bottomRight - x);
   }
   template <Numeric T>
-  BorderRadius operator*(const T x) {
+  constexpr BorderRadius operator*(const T x) const noexcept {
     return BorderRadius(topLeft * x, topRight * x, bottomLeft * x,
                         bottomRight * x);
   }
   template <Numeric T>
-  BorderRadius operator/(const T x) {
+  constexpr BorderRadius operator/(const T x) const noexcept {
     if (x == 0) return invalid();
     return BorderRadius(topLeft / x, topRight / x, bottomLeft / x,
                         bottomRight / x);
   }
 
-  static const BorderRadius invalid() {
+  static BorderRadius invalid() noexcept {
     static auto inv = BorderRadius(-1);
     return inv;
   }
   void invalidate() { topLeft = -1; }
-  bool isValid() {
+  constexpr bool isValid() const noexcept {
     return topLeft >= 0 && topRight >= 0 && bottomLeft >= 0 && bottomRight >= 0;
+  }
+  template <Numeric T>
+  constexpr bool contains(T i) const noexcept {
+    return topLeft == i || topRight == i || bottomLeft == i || bottomRight == i;
+  }
+  template <Numeric T>
+  const T minimumWidth() noexcept {
+    return topLeft + topRight >= bottomLeft + bottomRight
+               ? topLeft + topRight
+               : bottomLeft + bottomRight;
+  }
+  template <Numeric T>
+  const T minimumHeight() noexcept {
+    return topLeft + bottomLeft >= topRight + bottomRight
+               ? topLeft + bottomLeft
+               : topRight + bottomRight;
+  }
+  const QSize minimumSize() noexcept {
+    return QSize(minimumWidth<int>(), minimumHeight<int>());
   }
 
   int topLeft = 0, topRight = 0, bottomLeft = 0, bottomRight = 0;
 };
+
 #endif  // BORDERRADIUS_H
