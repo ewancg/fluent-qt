@@ -50,17 +50,17 @@ void Control::paintBackground(QPaintEvent *, QPainter &p) {
   const int w = width();
   const int h = height();
 
-  auto drawRoundedRect = [this, w, h](QPainterPath &p, const BorderRadius &r,
-                                      int inset) {
+  auto drawRoundedRect = [this, w, h](QPainterPath &pp,
+                                         const BorderRadius &r, int inset) {
     // clang-format off
-    p.arcMoveTo(
-            inset,                      inset,                      inset,          r.topLeft,      0);
+    pp.arcMoveTo(
+             inset,                      inset,                      inset,          r.topLeft,      0);
 
-    p.arcTo(inset,                      inset,                      r.topLeft,      r.topLeft,      180,    -90);
-    p.arcTo(w - r.topRight - inset,     inset,                      r.topRight,     r.topRight,     90,     -90);
-    p.arcTo(w - r.bottomRight - inset,  h - r.bottomRight - inset,  r.bottomRight,  r.bottomRight,  0,      -90);
-    p.arcTo(inset,                      h - r.bottomLeft - inset,   r.bottomLeft,   r.bottomLeft,   270,    -90);
-    p.arcTo(inset,                      inset,                      r.topLeft,      r.topLeft,      180,    0);
+    pp.arcTo(inset,                      inset,                      r.topLeft,      r.topLeft,      180,    -90);
+    pp.arcTo(w - r.topRight - inset,     inset,                      r.topRight,     r.topRight,     90,     -90);
+    pp.arcTo(w - r.bottomRight - inset,  h - r.bottomRight - inset,  r.bottomRight,  r.bottomRight,  0,      -90);
+    pp.arcTo(inset,                      h - r.bottomLeft - inset,   r.bottomLeft,   r.bottomLeft,   270,    -90);
+    pp.arcTo(inset,                      inset,                      r.topLeft,      r.topLeft,      180,    0);
     // clang-format on
   };
 
